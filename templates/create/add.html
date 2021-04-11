@@ -1,0 +1,23 @@
+{{ define "content" }}
+<h3 >新增单条考勤记录</h3>
+<form action="/add" method="post">
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="checkin">打上班卡时间</label>
+      <input id="checkin" type="text" maxlength=16 pattern="^20.*\d$" name="checkin" class="form-control form-control-lg" aria-describedby="checkinHelp" required>
+      <small id="checkinHelp" class="form-text text-muted">上班时间，如: 2019-12-12 07:35</small>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="checkout">打下班卡时间</label>
+      <input id="checkout" type="text" maxlength=16 pattern="^20.*\d$" name="checkout" class="form-control form-control-lg" aria-describedby="checkoutHelp" required>
+      <small id="checkoutHelp" class="form-text text-muted">下班时间，格式与上班时间相同</small>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="comments">备注</label>
+      <input id="comments" type="text"  name="comments" class="form-control form-control-lg" aria-describedby="commentsHelp">
+      <small id="commentsHelp" class="form-text text-muted">用于特殊情况说明，如迟到、早退、请假等，则必须填写</small>
+    </div>
+  </div>
+    <button type="submit" class="btn btn-primary">增加</button>
+</form>
+{{ end }}

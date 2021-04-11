@@ -1,0 +1,21 @@
+{{ define "content" }}
+<table class="table table-sm table-bordered table-striped table-hover">
+  <caption>周统计</caption>
+  <thead class="thead-dark">
+    <tr>
+      <th>年周</th>
+      <th>总工作小时数</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{ range $key,$value:=. }}
+    <tr>
+      <td>{{ $key }}</td>
+      <td>{{ $value | printf "%.2f" }}</td>
+    </tr>
+    {{ end }}
+  </tbody>
+</table>
+{{ end }}
+
+

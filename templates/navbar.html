@@ -1,0 +1,50 @@
+{{ define "navbar" }}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand mx-auto" href="/">Attendance</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          记录
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/rec/latest">最新记录</a>
+          <a class="dropdown-item" href="/rec/last-week">近一周记录</a>
+          <a class="dropdown-item" href="/rec/last-month">近一月记录</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/api/rec/latest">最新记录API</a>
+          <a class="dropdown-item" href="/api/rec/last-week">近一周记录API</a>
+          <a class="dropdown-item" href="/api/rec/last-month">近一月记录API</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          统计
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/stat/week">周统计</a>
+          <a class="dropdown-item" href="/stat/month">月统计</a>
+          <a class="dropdown-item" href="/stat/year">年统计</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/api/stat/week">周统计API</a>
+          <a class="dropdown-item" href="/api/stat/month">月统计API</a>
+          <a class="dropdown-item" href="/api/stat/year">年统计API</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/add">
+          新增单条记录
+        </a>
+      </li>
+      {{/*<!--<li class="nav-item">
+        <a class="nav-link" href="/api/add">
+          新增单条记录API
+        </a>
+      </li>-->*/}}
+    </ul>
+  </div>
+</nav>
+{{ end }}

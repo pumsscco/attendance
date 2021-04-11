@@ -1,0 +1,21 @@
+{{ define "content" }}
+<table class="table table-sm table-bordered table-striped table-hover">
+  <caption >最近一个月内记录</caption>
+  <thead class="thead-dark">
+    <tr>
+      <th>打上班卡时间</th>
+      <th>打下班卡时间</th>
+      <th>特殊情况说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{ range . }}
+    <tr>
+      <td>{{ .CheckIn.Format "2006-01-02 15:04" }}</td>
+      <td>{{ .CheckOut.Format "2006-01-02 15:04" }}</td>
+      <td>{{ .Comments }}</td>
+    </tr>
+    {{ end }}
+  </tbody>
+</table>
+{{ end }}

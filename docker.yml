@@ -1,0 +1,16 @@
+---
+listen:
+  host: 10.30.50.78
+  port: 5578
+mysql:
+  db: attendance
+  host: 10.30.50.70
+  port: 3306
+  user: attendance
+  pass: PmypqDx9xCWDnPMPhjks
+redis:
+  host: 10.30.50.71
+  port: 6379
+  db: 8
+  pass: zpNzg3YrqfWNJuwEtV7N
+logfile: attendance.log

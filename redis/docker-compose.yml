@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  redis:
+    container_name: redis
+    image: redis:6.0
+    volumes:
+    - /home/pluto/git-base-02/attendance/redis/data:/data
+    - /home/pluto/git-base-02/attendance/redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    expose:
+    - "6379"
+    ports:
+    - "56379:6379"
+    networks:
+      v1test:
+        ipv4_address: 10.30.50.71
+networks:
+  v1test:
+    name: v1test
+    ipam:
+      driver: default
+      config:
+      - subnet: "10.30.50.0/24"

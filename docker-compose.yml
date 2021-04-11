@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  attendance:
+    hostname: "attendance"
+    container_name: attendance
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose: 
+    - "5578"
+    ports:
+    - "5578:5578"
+    networks:
+      vlan0:
+        ipv4_address: 10.30.50.78
+networks:
+  vlan0:
+    external: true
+    name: vlan0

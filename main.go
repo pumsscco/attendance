@@ -42,8 +42,8 @@ var (
 //所有初始化操作
 func init() {
     //抓全部的配置信息
-    //yamlBytes, err := ioutil.ReadFile("config.yml")
-    yamlBytes, err := ioutil.ReadFile(ConfigFile)
+    yamlBytes, err := ioutil.ReadFile("config.yml")
+    //yamlBytes, err := ioutil.ReadFile(ConfigFile)
     if err!=nil {
         log.Fatalf("无法打开环境配置文件: %v",err)
     }

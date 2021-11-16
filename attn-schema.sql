@@ -30,7 +30,7 @@ CREATE TABLE `attendance` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `checkin` (`checkin`),
   UNIQUE KEY `checkout` (`checkout`)
-) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8 COMMENT='钉钉考勤记录';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='钉钉考勤记录';
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

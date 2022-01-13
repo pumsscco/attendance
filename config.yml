@@ -1,16 +1,15 @@
 ---
 listen:
-  host: localhost
   port: 55758
 mysql:
   db: attendance
-  host: localhost
+  host: mysql
   port: 3306
   user: attendance
   pass: 8tcDCn9FKiZcrWXFQ5gm
 redis:
-  host: localhost
+  host: redis
   port: 6379
   db: 8
   pass: pFG64SBbhGB56K8Cv5eZbrdQ
-logfile: attendance.log
+logfile: logs/attendance.log

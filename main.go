@@ -11,10 +11,10 @@ import (
     "github.com/julienschmidt/httprouter"
     _ "github.com/go-sql-driver/mysql"
     "os"
+    "path/filepath"
 )
 type Conf struct {
     Listen struct {
-        Host string `yaml:"host"`
         Port int `yaml:"port"`
     }
     MySQL struct {
@@ -36,19 +36,20 @@ var (
     Db *sql.DB
     logger *log.Logger
     client *redis.Client
-    ConfigFile="dev.yml"
     cnf Conf
 )
 //所有初始化操作
 func init() {
+    //获得本可执行文件的当前路径
+    dir,_:=filepath.Abs(filepath.Dir(os.Args[0]))
     //抓全部的配置信息
-    yamlBytes, err := ioutil.ReadFile("config.yml")
-    //yamlBytes, err := ioutil.ReadFile(ConfigFile)
+    yamlBytes, err := ioutil.ReadFile(dir+"/config.yml")
     if err!=nil {
         log.Fatalf("无法打开环境配置文件: %v",err)
     }
     yaml.Unmarshal(yamlBytes,&cnf)
-    file, err := os.OpenFile(cnf.Logfile, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+    //基于相对路径打开日志
+    file, err := os.OpenFile(dir+"/"+cnf.Logfile, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
     if err != nil {
         log.Fatalf("无法打开日志文件：%v\n", err)
     }
@@ -61,7 +62,7 @@ func init() {
     _, err = client.Ping().Result()
     if err!=nil {
         logger.Fatalf("redis连接异常：%v\n",err)
-    }    
+    } 
     dsn:=fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?loc=Local&parseTime=true", cnf.MySQL.User, cnf.MySQL.Pass, cnf.MySQL.Host, cnf.MySQL.Port, cnf.MySQL.Db)
     //fmt.Println("Data Source Name: ",dsn)
     Db,err=sql.Open("mysql",dsn)
@@ -95,5 +96,5 @@ func main() {
     router.POST("/add", add)
     router.POST("/api/add", add)
     //以最简方式启动服务
-    log.Fatal(http.ListenAndServe(fmt.Sprintf("%s:%d",cnf.Listen.Host,cnf.Listen.Port),router))
+    log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d",cnf.Listen.Port),router))
 }
